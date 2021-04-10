@@ -1,0 +1,11 @@
+---
+# Passwords are stored in passwords.yml
+webusers:
+  - username: webuser
+    comment: Regular web user
+
+  - username: webadmin
+    comment: Web administrator
+
+  - username: webdev
+    comment: Web developer

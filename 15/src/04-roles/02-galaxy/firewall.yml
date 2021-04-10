@@ -1,0 +1,28 @@
+---
+- hosts: webservers
+  become: true
+
+  tasks:
+    - name: Configure Ubuntu firewall
+      include_role:
+        name: weareinteractive.ufw
+      vars:
+        ufw_rules:
+          - logging: "full"
+          - rule: allow
+            to_port: "80"
+            proto: tcp
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Configure CentOS firewall
+      include_role:
+        name: flatkey.firewalld
+      vars:
+        default_zone: public
+        firewalld_service_rules:
+          http:
+            state: enabled
+            zone: public
+            permanent: true
+            immediate: true
+      when: ansible_distribution == "CentOS"

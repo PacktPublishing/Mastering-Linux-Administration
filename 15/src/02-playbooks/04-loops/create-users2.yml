@@ -1,0 +1,15 @@
+---
+- name: Create users on webservers
+  hosts: webservers
+  become: yes
+  vars:
+    users:
+      - webuser
+      - webadmin
+      - webdev
+  tasks:
+    - name: Create the '{{item}}' account
+      user:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ users }}"

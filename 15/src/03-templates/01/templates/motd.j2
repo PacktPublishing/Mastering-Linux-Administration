@@ -1,0 +1,11 @@
+{# We could pass these variables from the playbook #}
+{% set date = '2021-04-08' %}
+{% set start_time = date ~ 'T02:00:00-0800' %}
+{% set end_time = date ~ 'T03:00:00-0800' %}
+
+{% set fmt = '%Y-%m-%dT%H:%M:%S%z' %}
+{% set start = (start_time | to_datetime(format=fmt)) %}
+{% set end = (end_time | to_datetime(format=fmt)) %}
+
+{# We could also use the {{ inventory_hostname }} special variable #}
+{{ ansible_facts.fqdn }} ({{ ansible_facts.default_ipv4.address }}) will be down for maintenance on {{ start.strftime('%A, %B %-d, %Y') }}, between {{ start.strftime('%-I') }} - {{ end.strftime('%-I %p (%Z)') }}.

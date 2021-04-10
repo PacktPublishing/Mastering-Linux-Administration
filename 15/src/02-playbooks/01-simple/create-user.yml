@@ -1,0 +1,9 @@
+---
+- name: Create a specific user on all web servers
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Create the 'webuser' account
+      user:
+        name: webuser
+        state: present

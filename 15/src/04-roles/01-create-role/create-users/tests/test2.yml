@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: Create users
+    include_role:
+      name: create-users
+    vars:
+      users_file: users.yml
+      passwords_file: passwords.yml

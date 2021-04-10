@@ -1,0 +1,11 @@
+---
+- name: Create a specific user on all web servers
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Create the '{{ username }}' account
+      user:
+        name: "{{ username }}"
+        password: "{{ password | password_hash('sha512') }}"
+        update_password: always
+        state: present

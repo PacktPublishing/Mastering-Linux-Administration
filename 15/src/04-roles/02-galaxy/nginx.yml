@@ -1,0 +1,14 @@
+---
+- name: Install NGINX on all webservers
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Install NGINX
+      include_role:
+        name: nginxinc.nginx
+      vars:
+        nginx_debug_output: true
+        nginx_selinux: true
+        nginx_selinux_tcp_ports:
+          - "80"
+          - "443"

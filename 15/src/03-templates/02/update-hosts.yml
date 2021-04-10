@@ -1,0 +1,12 @@
+---
+- name: Update the hosts file
+  hosts: all
+  become: yes
+  tasks:
+    - name: Deploy the 'hosts' template
+      template:
+        src: hosts.j2
+        dest: /etc/hosts
+        owner: root
+        group: root
+        mode: 0644

@@ -1,0 +1,23 @@
+---
+- name: Create a specific user on all web servers
+  hosts: webservers
+  become: yes
+  vars:
+    password: "{{ vars[username]['password'] }}"
+  tasks:
+    - name: Get the password for {{ username }} from Vault
+      include_vars:
+        file: passwords.yml
+
+    - name: Debug password for {{ username }}
+      debug:
+        msg: "{{ password }}"
+      no_log: true
+
+    - name: Create the '{{ username }}' account
+      user:
+        name: "{{ username }}"
+        comment: "{{ comment }}"
+        password: "{{ password | password_hash('sha512') }}"
+        update_password: always
+        state: present

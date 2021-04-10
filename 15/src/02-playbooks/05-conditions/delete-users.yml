@@ -1,0 +1,25 @@
+---
+- name: Delete users
+  hosts: all
+  become: yes
+  tasks:
+    - name: Load users
+      include_vars:
+        file: users.yml
+        name: users
+    - name: Delete web user
+      user:
+        name: "{{ item.username }}"
+        remove: yes
+        force: yes
+        state: absent
+      loop: "{{ users.webusers }}"
+      when: "'webservers' in group_names"
+    - name: Delete database user
+      user:
+        name: "{{ item.username }}"
+        remove: yes
+        force: yes
+        state: absent
+      loop: "{{ users.dbusers }}"
+      when: "'databases' in group_names"

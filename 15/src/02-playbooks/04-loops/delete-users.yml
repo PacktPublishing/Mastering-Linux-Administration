@@ -1,0 +1,16 @@
+---
+- name: Delete users on webservers
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Load web users
+      include_vars:
+        file: users.yml
+        name: users
+    - name: Delete users
+      user:
+        name: "{{ item.username }}"
+        remove: yes
+        force: yes
+        state: absent
+      loop: "{{ users.webusers }}"

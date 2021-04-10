@@ -1,0 +1,21 @@
+---
+- name: Create users on webservers
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Load users
+      include_vars:
+        file: users.yml
+        name: users
+    - name: Load passwords
+      include_vars:
+        file: passwords.yml
+        name: passwords
+    - name: Create user accounts
+      user:
+        name: "{{ item.username }}"
+        comment: "{{ item.comment }}"
+        password: "{{ passwords[item.username]['password'] | password_hash('sha512') }}"
+        update_password: always
+        state: present
+      loop: "{{ users.webusers }}"

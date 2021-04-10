@@ -1,0 +1,9 @@
+---
+- name: Create a specific user on all web servers
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Create the '{{ username }}' account
+      user:
+        name: "{{ username }}"
+        state: present

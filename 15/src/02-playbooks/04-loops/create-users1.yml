@@ -1,0 +1,17 @@
+---
+- name: Create users on webservers
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Create the 'webuser' account
+      user:
+        name: webuser
+        state: present
+    - name: Create the 'webadmin' account
+      user:
+        name: webadmin
+        state: present
+    - name: Create the 'webdev' account
+      user:
+        name: webdev
+        state: present

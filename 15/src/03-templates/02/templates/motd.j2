@@ -1,0 +1,8 @@
+{% set start_time_ = date ~ 'T' ~ start_time ~ utc %}
+{% set end_time_ = date ~ 'T' ~ end_time ~ utc %}
+
+{% set fmt = '%Y-%m-%dT%H:%M:%S%z' %}
+{% set start = (start_time_ | to_datetime(format=fmt)) %}
+{% set end = (end_time_ | to_datetime(format=fmt)) %}
+
+{{ ansible_facts.fqdn }} ({{ ansible_facts.default_ipv4.address }}) will be down for maintenance on {{ start.strftime('%A, %B %-d, %Y') }}, between {{ start.strftime('%-I') }} - {{ end.strftime('%-I %p (%Z)') }}.

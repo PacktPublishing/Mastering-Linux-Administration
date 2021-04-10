@@ -1,0 +1,17 @@
+---
+- name: Detect if the number of users exceeds the limit
+  hosts: all
+  become: yes
+  vars:
+    max_allowed: 30
+  tasks:
+  - name: Count all users
+    shell: "getent passwd | wc -l"
+    register: count
+  - name: Debug number of users
+    debug:
+      msg: "Number of users: {{ count.stdout }}. Limit: {{ max_allowed }}"
+  - name: Detect limit
+    debug:
+      msg: "Maximum number of users reached!"
+    when: count.stdout | int > max_allowed

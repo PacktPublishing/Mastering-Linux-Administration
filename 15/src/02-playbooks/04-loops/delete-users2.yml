@@ -1,0 +1,17 @@
+---
+- name: Delete users on webservers
+  hosts: webservers
+  become: yes
+  vars:
+    users:
+      - webuser
+      - webadmin
+      - webdev
+  tasks:
+    - name: Delete user
+      user:
+        name: "{{ item }}"
+        state: absent
+        remove: yes
+        force: yes
+      loop: "{{ users }}"

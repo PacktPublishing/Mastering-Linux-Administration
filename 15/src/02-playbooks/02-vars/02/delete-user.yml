@@ -1,0 +1,13 @@
+---
+- name: Delete a specific user on all web servers
+  hosts: webservers
+  become: yes
+  vars:
+    username: webuser
+  tasks:
+    - name: Delete the '{{ username }}' account
+      user:
+        name: "{{ username }}"
+        remove: yes
+        force: yes
+        state: absent

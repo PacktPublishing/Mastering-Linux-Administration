@@ -1,0 +1,12 @@
+---
+# Example user accounts.
+# Passwords are stored in passwords.yml
+list:
+  - username: testuser
+    comment: Test user
+
+  - username: testadmin
+    comment: Test admin
+
+  - username: testdev
+    comment: Test dev

@@ -1,0 +1,13 @@
+---
+- name: Install system updates
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Install CentOS system updates
+    yum: name=* state=latest update_cache=yes
+    when: ansible_distribution == "CentOS"
+
+  - name: Install Ubuntu system updates
+    apt: upgrade=dist update_cache=yes
+    when: ansible_distribution == "Ubuntu"
