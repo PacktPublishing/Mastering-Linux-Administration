@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Assuming ./log directory exists!
+if [[ ! -d "./log" ]]; then echo "No log dir!"; exit 1; fi
+
+LOG_FILE="./log/appackt"
+
+echo "Creating ${LOG_FILE}..."
+touch ${LOG_FILE}
+
+echo "Writing to ${LOG_FILE}..."
+date +"%b %d %T ${HOSTNAME}: Hello from Packt!" >> ${LOG_FILE}
+
+echo "Reading from ${LOG_FILE}..."
+cat ${LOG_FILE}
+
+echo "Deleting ${LOG_FILE}..."
+rm ${LOG_FILE}

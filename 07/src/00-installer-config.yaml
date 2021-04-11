@@ -1,0 +1,11 @@
+network:
+version: 2
+renderer: NetworkManager
+ethernets:
+  ens33:
+    dhcp4: false
+    addresses:
+    - 172.16.146.100/24
+    gateway4: 172.16.146.2
+    nameservers:
+      addresses: [8.8.8.8, 8.8.4.4]

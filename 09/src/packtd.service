@@ -1,0 +1,9 @@
+[Unit]
+Description="Checking the logs"
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/packtd
+
+[Install]
+WantedBy=multi-user.target

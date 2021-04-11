@@ -1,0 +1,48 @@
+#!/bin/bash
+ 
+start_vnc() {
+    echo "Starting vnc..."
+    /build/cm/bin/vnc/startvnc -geometry 1920x1080
+}
+ 
+stop_vnc() {
+    echo "Stopping vnc..."
+    vncserver -kill :1
+}
+ 
+function show_usage() {
+    echo -e "Starts/stops VNC server"
+    echo -e "Usage: ${PROG} [OPTIONS]..."
+    echo -e "\t -h, --help \t\t Displays help text"
+    echo -e "\t --start \t\t Starts VNC server"
+    echo -e "\t --stop \t\t Stops VNC server"
+    exit 0
+}
+ 
+function parse_input() {
+    if [[ $# -eq 0 ]]; then
+        show_usage
+    fi
+    while [[ $# -gt 0 ]]; do
+        case "${1}" in
+            -h|--help)
+                show_usage
+                ;;
+            --start)
+                start_vnc
+                ;;
+            --stop)
+                stop_vnc
+                ;;
+            -*)
+                show_usage
+                ;;
+            *)
+                show_usage
+                ;;
+        esac
+        shift
+    done
+}
+ 
+parse_input "$@"
