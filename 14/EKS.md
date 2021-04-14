@@ -70,7 +70,9 @@ Get pods. Note the control plane pods are not listed.
 kubectl get pods --all-namespaces
 ```
 
-Update local kubeconfig to include the EKS cluster.
+### Adding an EKS cluster context to kubeconfig
+
+If you need to manage your EKS cluster from a different machine, update the local kubeconfig to include the EKS cluster. This machine needs to have the AWS CLI configured.
 
 ```
 aws eks update-kubeconfig \
@@ -91,6 +93,8 @@ kubectl config rename-context \
     arn:aws:eks:us-west-2:106842557074:cluster/k8s-packt \
     k8s-packt-eks
 ```
+
+### Deleting an EKS cluster.
 
 Delete the `k8s-packt` cluster on EKS.
 
