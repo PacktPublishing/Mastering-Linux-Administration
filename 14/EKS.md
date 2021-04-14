@@ -70,12 +70,6 @@ Get pods. Note the control plane pods are not listed.
 kubectl get pods --all-namespaces
 ```
 
-Delete the `k8s-packt` cluster on EKS.
-
-```
-eksctl delete cluster --name k8s-packt
-```
-
 Update local kubeconfig to include the EKS cluster.
 
 ```
@@ -97,3 +91,13 @@ kubectl config rename-context \
     arn:aws:eks:us-west-2:106842557074:cluster/k8s-packt \
     k8s-packt-eks
 ```
+
+Delete the `k8s-packt` cluster on EKS.
+
+```
+eksctl delete cluster --name k8s-packt
+```
+
+> **Note**
+>
+> The command above only removes the EKS cluster without deleting all resources involved in creating the cluster, including the cloud formation templates, networks, and security groups. You may have to delete those resources manually if you don't use them.
