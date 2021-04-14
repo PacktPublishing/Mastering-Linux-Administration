@@ -2,7 +2,7 @@
 
 This document captures the commands used in the _Working with EKS_ section of chapter 14.
 
->**Important Note**
+> **Important Note**
 >
 > Before deploying a Kubernetes cluster with EKS, we need to assign the Amazon EKS Cluster IAM role to our AWS account. Please follow the related instructions at: https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html#create-service-role.
 
@@ -32,6 +32,10 @@ eksctl create cluster \
     --region us-west-2 \
     --managed
 ```
+
+> **Note**
+>
+> The command may take up to 15 minutes to complete, sometimes even more. It will create and deploy all the required resources for the cluster, including the Virtual Private Cloud (VPC), security groups, networks, EIP (Elastic IP), and the cluster node EC2 instances.
 
 Get the current kubeconfig contexts.
 
