@@ -1,5 +1,9 @@
 # Working with EKS
 
+>**Important Note**
+>
+> Before deploying a Kubernetes cluster with EKS, we need to assign the Amazon EKS Cluster IAM role to our AWS account. Please follow the related instructions at: https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html#create-service-role.
+
 Download and install `eksctl`.
 
 ```
