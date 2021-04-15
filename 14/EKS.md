@@ -101,7 +101,3 @@ Delete the `k8s-packt` cluster on EKS.
 ```
 eksctl delete cluster --name k8s-packt
 ```
-
-> **Note**
->
-> The command above only removes the EKS cluster without deleting all resources involved in creating the cluster, including the cloud formation templates, networks, and security groups. You may have to delete those resources manually if you don't use them.
