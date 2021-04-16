@@ -96,3 +96,17 @@ Now you can run the `create-user` playbook without the `--ask-vault-pass` option
 ```
 ansible-playbook create-user.yml
 ```
+
+## Using vault IDs
+
+The following command creates a vault ID labeled `passwords` and prompts us to create a password:
+
+```
+ansible-vault create --vault-id passwords@prompt passwords.yml
+```
+
+You can pass a vault ID (`passwords`) to a playbook (`create-users.yml`) with the following command:
+
+```
+ansible-playbook --vault-id passwords@passwords.pass create-users.yml
+```
