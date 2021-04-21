@@ -1,0 +1,9 @@
+#!/bin/bash
+
+printf "your IP is: \n"
+
+ip route get 8.8.8.8 | awk -F"src " 'NR==1{split($2,ip," ");print ip[1]}'
+
+printf "your interface name is: \n"
+
+ip route get 8.8.8.8 | awk -F"dev " 'NR==1{split($2,inter," ");print inter[1]}'
