@@ -1,0 +1,30 @@
+Name:				ip-app
+Version:		0.1
+Release:		1%{?dist}
+Summary: 		A simple script that shows the IP and interface name
+
+License: 		GPLv3
+URL:				https://example.com/%{name}
+Source0:		https://example.com/%{name}/release/%{name}-%{version}.tar.gz
+
+Requires:		bash
+BuildArch: 	noarch
+
+%description
+Description of the software provided.
+
+%prep
+%setup -q
+
+%build
+
+%install
+mkdir -p %{buildroot}/%{_bindir}
+install -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
+
+%files
+%license LICENSE
+%{_bindir}/%{name}
+
+%changelog
+* Sun Sep 13 2020 packt
