@@ -1,3 +1,15 @@
+
+### Get this product for $5
+
+<i>Packt is having its biggest sale of the year. Get this eBook or any other book, video, or course that you like just for $5 each</i>
+
+
+<b><p align='center'>[Buy now](https://packt.link/9781789954272)</p></b>
+
+
+<b><p align='center'>[Buy similar titles for just $5](https://subscription.packtpub.com/search)</p></b>
+
+
 # Mastering Linux Administration
 
 <a href="https://www.packtpub.com/product/mastering-linux-administration/9781789954272?utm_source=github&utm_medium=repository&utm_campaign=9781789954272"><img src="https://static.packt-cdn.com/products/9781789954272/cover/smaller" alt="Mastering Linux Administration" height="256px" align="right"></a>
